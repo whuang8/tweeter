@@ -59,11 +59,12 @@
                                     <constraint firstItem="Y5O-aT-4vI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ywu-w0-Nz2" secondAttribute="leading" constant="8" id="2hz-11-ViM"/>
                                     <constraint firstItem="sGE-1e-hpV" firstAttribute="top" secondItem="Ywu-w0-Nz2" secondAttribute="top" constant="78" id="8Zx-iA-ZgA"/>
                                     <constraint firstAttribute="bottom" secondItem="1ka-Ub-eZ0" secondAttribute="bottom" constant="98" id="Ibi-qI-KB6"/>
-                                    <constraint firstItem="1ka-Ub-eZ0" firstAttribute="leading" secondItem="Ywu-w0-Nz2" secondAttribute="leading" constant="112" id="R5Q-UF-RMH"/>
+                                    <constraint firstItem="1ka-Ub-eZ0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ywu-w0-Nz2" secondAttribute="leading" constant="8" id="R5Q-UF-RMH"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Y5O-aT-4vI" secondAttribute="trailing" constant="8" id="gDC-Vb-zpR"/>
                                     <constraint firstItem="sGE-1e-hpV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ywu-w0-Nz2" secondAttribute="leading" constant="8" id="hbY-6k-kiP"/>
+                                    <constraint firstItem="1ka-Ub-eZ0" firstAttribute="centerX" secondItem="Ywu-w0-Nz2" secondAttribute="centerX" id="lze-Ik-dyB"/>
                                     <constraint firstItem="Y5O-aT-4vI" firstAttribute="centerX" secondItem="sGE-1e-hpV" secondAttribute="centerX" id="o5Q-hk-MRg"/>
-                                    <constraint firstAttribute="trailing" secondItem="1ka-Ub-eZ0" secondAttribute="trailing" constant="112" id="pgk-vN-ZXl"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1ka-Ub-eZ0" secondAttribute="trailing" constant="8" id="pgk-vN-ZXl"/>
                                     <constraint firstItem="Y5O-aT-4vI" firstAttribute="top" secondItem="sGE-1e-hpV" secondAttribute="bottom" constant="8" id="v3H-Cv-q5r"/>
                                 </constraints>
                             </view>
