@@ -43,36 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        print(url.description)
-        let requestToken = BDBOAuth1Credential(queryString: url.query)
-        let twitterClient = BDBOAuth1SessionManager(baseURL: URL(string: "https://api.twitter.com"), consumerKey: "bRFFweljdqXmeTyuCm5OeoTMm", consumerSecret: "alOB7bWzbseTWuChr6IN5qPoBaKvDdoWEBqnIPZHoFZBOK1mCW")
-        twitterClient?.fetchAccessToken(withPath: "/oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken) in
-            print("request token: \(requestToken?.token)")
-            print("I got the access token \(accessToken?.token)")
-            
-            twitterClient?.get("/1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
-                let userDictionary = response as! NSDictionary
-                let user = User(dictionary: userDictionary)
-                print(user)
-            }, failure: { (task: URLSessionDataTask?, error: Error) in
-                print("error: \(error.localizedDescription)")
-            })
-            
-            twitterClient?.get("/1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
-                let tweetsDictionaries = response as! [NSDictionary]
-                let tweets = Tweet.tweetsWithArray(dictionaries: tweetsDictionaries)
-                
-                for tweet in tweets {
-                    print(tweet.text!)
-                }
-                
-            }, failure: { (task: URLSessionDataTask?, error: Error) in
-                print("error: \(error.localizedDescription)")
-            })
-            
-        }, failure: { (error) in
-            print("error: \(error?.localizedDescription)")
-        })
+        TwitterClient.sharedInstance.handleOpenUrl(url: url)
         return true
     }
 

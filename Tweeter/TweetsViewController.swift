@@ -1,20 +1,20 @@
 //
-//  LoginViewController.swift
+//  TweetsViewController.swift
 //  Tweeter
 //
-//  Created by William Huang on 2/20/17.
+//  Created by William Huang on 2/22/17.
 //  Copyright © 2017 William Huang. All rights reserved.
 //
 
 import UIKit
-import BDBOAuth1Manager
 
-class LoginViewController: UIViewController {
+class TweetsViewController: UIViewController {
 
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginButton.layer.cornerRadius = 5
+
         // Do any additional setup after loading the view.
     }
 
@@ -23,13 +23,6 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onLoginButton(_ sender: Any) {
-        TwitterClient.sharedInstance.login(success: {
-            self.performSegue(withIdentifier: "loginSegue", sender: nil)
-        }) { (error: Error) in
-            print("error: \(error.localizedDescription)")
-        }
-    }
 
     /*
     // MARK: - Navigation
