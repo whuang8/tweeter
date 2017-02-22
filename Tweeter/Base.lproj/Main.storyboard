@@ -21,24 +21,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ka-Ub-eZ0">
-                                <rect key="frame" x="61" y="406" width="252" height="82"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.25098039215686274" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Log in with Twitter">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="onLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g4W-RC-Rr5"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ywu-w0-Nz2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TwitterLogoBlue" translatesAutoresizingMaskIntoConstraints="NO" id="sGE-1e-hpV">
+                                        <rect key="frame" x="137" y="78" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="3xe-Te-sew"/>
+                                            <constraint firstAttribute="height" constant="100" id="c9N-qr-ovU"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweeter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5O-aT-4vI">
+                                        <rect key="frame" x="120" y="186" width="134" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
+                                        <color key="textColor" red="0.25098039215686274" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ka-Ub-eZ0">
+                                        <rect key="frame" x="112" y="504" width="151" height="65"/>
+                                        <color key="backgroundColor" red="0.25098039215686274" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="151" id="t5O-K5-sjb"/>
+                                            <constraint firstAttribute="height" constant="65" id="uVu-SH-A5r"/>
+                                        </constraints>
+                                        <state key="normal" title="Log in with Twitter">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g4W-RC-Rr5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Y5O-aT-4vI" firstAttribute="centerX" secondItem="1ka-Ub-eZ0" secondAttribute="centerX" id="0qW-0Z-yfU"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sGE-1e-hpV" secondAttribute="trailing" constant="8" id="11z-k8-jfu"/>
+                                    <constraint firstItem="Y5O-aT-4vI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ywu-w0-Nz2" secondAttribute="leading" constant="8" id="2hz-11-ViM"/>
+                                    <constraint firstItem="sGE-1e-hpV" firstAttribute="top" secondItem="Ywu-w0-Nz2" secondAttribute="top" constant="78" id="8Zx-iA-ZgA"/>
+                                    <constraint firstAttribute="bottom" secondItem="1ka-Ub-eZ0" secondAttribute="bottom" constant="98" id="Ibi-qI-KB6"/>
+                                    <constraint firstItem="1ka-Ub-eZ0" firstAttribute="leading" secondItem="Ywu-w0-Nz2" secondAttribute="leading" constant="112" id="R5Q-UF-RMH"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Y5O-aT-4vI" secondAttribute="trailing" constant="8" id="gDC-Vb-zpR"/>
+                                    <constraint firstItem="sGE-1e-hpV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ywu-w0-Nz2" secondAttribute="leading" constant="8" id="hbY-6k-kiP"/>
+                                    <constraint firstItem="Y5O-aT-4vI" firstAttribute="centerX" secondItem="sGE-1e-hpV" secondAttribute="centerX" id="o5Q-hk-MRg"/>
+                                    <constraint firstAttribute="trailing" secondItem="1ka-Ub-eZ0" secondAttribute="trailing" constant="112" id="pgk-vN-ZXl"/>
+                                    <constraint firstItem="Y5O-aT-4vI" firstAttribute="top" secondItem="sGE-1e-hpV" secondAttribute="bottom" constant="8" id="v3H-Cv-q5r"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ywu-w0-Nz2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="3gO-vz-qTy"/>
+                            <constraint firstAttribute="trailing" secondItem="Ywu-w0-Nz2" secondAttribute="trailing" id="JXg-9E-pWC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ywu-w0-Nz2" secondAttribute="bottom" id="dcz-oc-nd4"/>
+                            <constraint firstItem="Ywu-w0-Nz2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kK2-Kg-lQ9"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="1ka-Ub-eZ0" id="hrQ-fW-pCu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="TwitterLogoBlue" width="200" height="200"/>
+    </resources>
 </document>
