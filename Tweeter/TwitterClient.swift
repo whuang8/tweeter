@@ -21,7 +21,6 @@ class TwitterClient: BDBOAuth1SessionManager {
         
         TwitterClient.sharedInstance.deauthorize()
         TwitterClient.sharedInstance.fetchRequestToken(withPath: "/oauth/request_token", method: "GET", callbackURL: URL(string: "tweeter://oauth"), scope: nil, success: { (requestToken) in
-            print("I got a token \(requestToken?.token)")
             let url = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken!.token!)")!
             UIApplication.shared.open(url)
         }, failure: { (error) in
