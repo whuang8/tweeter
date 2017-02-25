@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import AFNetworking
 
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    var tweets: [Tweet] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,12 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         self.tabBarController?.tabBar.tintColor = UIColor(colorLiteralRed: 64/255, green: 153/255, blue: 255/255, alpha: 1)
         setNavigationBarButtons()
+        TwitterClient.sharedInstance.homeTimeline(success: { (tweets:[Tweet]) in
+            self.tweets = tweets
+            self.tableView.reloadData()
+        }) { (error: Error) in
+            print("error: \(error.localizedDescription)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,11 +59,16 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return tweets.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell") as! TweetCell
+        let tweet = tweets[indexPath.row]
+        if let url = tweet.profileUrl {
+           cell.profilePictureImageView.setImageWith(url)
+        }
+        
         return cell
     }
 
