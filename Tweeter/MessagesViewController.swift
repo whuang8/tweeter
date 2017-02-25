@@ -1,20 +1,18 @@
 //
-//  TweetsViewController.swift
+//  MessagesViewController.swift
 //  Tweeter
 //
-//  Created by William Huang on 2/22/17.
+//  Created by William Huang on 2/25/17.
 //  Copyright © 2017 William Huang. All rights reserved.
 //
 
 import UIKit
 
-class TweetsViewController: UIViewController {
+class MessagesViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.tintColor = UIColor(colorLiteralRed: 64/255, green: 153/255, blue: 255/255, alpha: 1)
+
         setNavigationBarButtons()
     }
 
@@ -24,16 +22,8 @@ class TweetsViewController: UIViewController {
     }
     
     func setNavigationBarButtons() {
-        let logoImage = UIImage(named: "TwitterLogoBlue")
         let connectImage = UIImage(named: "addfriend-icon")
         let composeImage = UIImage(named: "edit-icon")
-        
-        let logoView = UIImageView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-        logoView.image = logoImage
-        logoView.contentMode = .scaleAspectFit
-        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-        logoView.frame = titleView.bounds
-        titleView.addSubview(logoView)
         
         let connectButton = UIBarButtonItem(image: connectImage, style: .plain, target: self, action: nil)
         let composeButton = UIBarButtonItem(image: composeImage, style: .plain, target: self, action: nil)
@@ -44,9 +34,10 @@ class TweetsViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor(colorLiteralRed: 64/255, green: 153/255, blue: 255/255, alpha: 1)
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationItem.rightBarButtonItems = [composeButton, searchButton]
-        self.navigationItem.titleView = titleView
+        self.navigationItem.title = "Messages"
         self.navigationItem.leftBarButtonItem = connectButton
     }
+
     
 
     /*
