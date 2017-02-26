@@ -226,7 +226,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="hU5-ds-Afu">
             <objects>
-                <tabBarController id="5Ce-l3-qYT" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TweeterTabBarController" id="5Ce-l3-qYT" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="oDs-2S-mK7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

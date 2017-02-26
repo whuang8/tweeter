@@ -30,6 +30,12 @@ class TwitterClient: BDBOAuth1SessionManager {
         
     }
     
+    func logout() {
+        User.currentUser = nil
+        deauthorize()
+        NotificationCenter.default.post(name: User.userDidLogoutNotification, object: nil)
+    }
+    
     func homeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
         get("/1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             let tweetsDictionaries = response as! [NSDictionary]
@@ -55,7 +61,12 @@ class TwitterClient: BDBOAuth1SessionManager {
     func handleOpenUrl(url: URL) {
         let requestToken = BDBOAuth1Credential(queryString: url.query)
         fetchAccessToken(withPath: "/oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken) in
-            self.loginSuccess?()
+            self.currentAccount(success: { (user: User) in
+                User.currentUser = user
+                self.loginSuccess?()
+            }, failure: { (error: Error) in
+                self.loginFailure?(error)
+            })
         }, failure: { (error) in
             print("error: \(error?.localizedDescription)")
             self.loginFailure?(error!)
