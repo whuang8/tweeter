@@ -199,7 +199,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="favoriteCount" destination="ecG-Ma-lps" id="xse-qG-r3c"/>
                                             <outlet property="profilePictureImageView" destination="nBG-x4-O63" id="nym-TJ-pCZ"/>
+                                            <outlet property="replyCount" destination="QVv-xC-VoM" id="O9j-VE-8i7"/>
+                                            <outlet property="retweetCount" destination="v4k-E5-bR6" id="Etc-Qk-MCB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
