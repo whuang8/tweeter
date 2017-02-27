@@ -13,6 +13,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet] = []
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 40
+
+        refreshControl.addTarget(self, action: #selector(fetchTweets), for: .valueChanged)
+        tableView.addSubview(refreshControl)
         
         self.tabBarController?.tabBar.tintColor = UIColor(colorLiteralRed: 64/255, green: 153/255, blue: 255/255, alpha: 1)
         setNavigationBarButtons()
@@ -34,6 +38,17 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func fetchTweets() {
+        TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) in
+            self.tweets = tweets
+            self.refreshControl.endRefreshing()
+            self.tableView.reloadData()
+        }) { (error: Error) in
+            print("error: \(error.localizedDescription)")
+            self.refreshControl.endRefreshing()
+        }
     }
     
     func setNavigationBarButtons() {

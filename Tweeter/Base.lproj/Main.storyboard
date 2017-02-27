@@ -202,6 +202,7 @@
                                             <constraints>
                                                 <constraint firstItem="nBG-x4-O63" firstAttribute="top" secondItem="cgU-VF-VdR" secondAttribute="top" constant="17" id="20f-h8-Jno"/>
                                                 <constraint firstItem="ET4-uw-pbc" firstAttribute="top" secondItem="cgU-VF-VdR" secondAttribute="top" constant="25" id="3qO-fO-bPJ"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Rcr-Ob-1CB" secondAttribute="trailing" constant="8" id="4jp-Nv-ePZ"/>
                                                 <constraint firstItem="Sex-U0-p1R" firstAttribute="leading" secondItem="QVv-xC-VoM" secondAttribute="trailing" constant="45" id="4m0-QH-ab2"/>
                                                 <constraint firstItem="QVv-xC-VoM" firstAttribute="centerY" secondItem="zia-Y3-AeE" secondAttribute="centerY" id="AZh-ay-r4l"/>
                                                 <constraint firstAttribute="bottom" secondItem="zia-Y3-AeE" secondAttribute="bottom" constant="10" id="EK3-jS-un5"/>
