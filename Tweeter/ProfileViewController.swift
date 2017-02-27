@@ -34,11 +34,11 @@ class ProfileViewController: UIViewController {
     
     func onLogOut(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: User.currentUser?.name, message: "Are you sure you want to logout of Tweeter?", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Logout", style: UIAlertActionStyle.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: { (UIAlertAction) in
+            TwitterClient.sharedInstance.logout()
+        }))
         self.present(alert, animated: true, completion: nil)
-        print("asdasd")
-        TwitterClient.sharedInstance.logout()
     }
 
 

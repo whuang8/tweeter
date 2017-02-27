@@ -18,6 +18,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 40
+        
         self.tabBarController?.tabBar.tintColor = UIColor(colorLiteralRed: 64/255, green: 153/255, blue: 255/255, alpha: 1)
         setNavigationBarButtons()
         TwitterClient.sharedInstance.homeTimeline(success: { (tweets:[Tweet]) in
@@ -68,6 +71,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let url = tweet.profileUrl {
            cell.profilePictureImageView.setImageWith(url)
         }
+        cell.userNameLabel.text = tweet.user?.name
+        cell.userHandleLabel.text = "@\((tweet.user?.screenname)!)"
+        cell.tweetTextLabel.text = tweet.text
         
         return cell
     }

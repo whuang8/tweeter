@@ -39,6 +39,11 @@ class TwitterClient: BDBOAuth1SessionManager {
     func homeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
         get("/1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             let tweetsDictionaries = response as! [NSDictionary]
+            
+            let json = try! JSONSerialization.data(withJSONObject: tweetsDictionaries[0], options: JSONSerialization.WritingOptions.prettyPrinted)
+            let jsonString = NSString(data: json, encoding: String.Encoding.utf8.rawValue)! as String
+            print(jsonString)
+            
             let tweets = Tweet.tweetsWithArray(dictionaries: tweetsDictionaries)
             success(tweets)
         }, failure: { (task: URLSessionDataTask?, error: Error) in
