@@ -36,8 +36,12 @@ class TwitterClient: BDBOAuth1SessionManager {
         NotificationCenter.default.post(name: User.userDidLogoutNotification, object: nil)
     }
     
-    func homeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
-        get("/1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+    func homeTimeline(withMaxId maxId: Int?, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        var endpoint = "/1.1/statuses/home_timeline.json"
+        if let maxId = maxId {
+            endpoint = "/1.1/statuses/home_timeline.json?max_id=\(maxId)"
+        }
+        get(endpoint, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             let tweetsDictionaries = response as! [NSDictionary]
             
             let json = try! JSONSerialization.data(withJSONObject: tweetsDictionaries[0], options: JSONSerialization.WritingOptions.prettyPrinted)

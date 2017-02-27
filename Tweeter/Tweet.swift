@@ -10,6 +10,7 @@ import UIKit
 
 class Tweet: NSObject {
     
+    var id: Int?
     var profileUrl: URL?
     var user: User?
     var text: String?
@@ -19,6 +20,7 @@ class Tweet: NSObject {
     
     init(dictionary: NSDictionary) {
         
+        id = dictionary["id"] as? Int
         text = dictionary["text"] as? String
         
         // Picture

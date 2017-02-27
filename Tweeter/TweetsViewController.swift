@@ -9,11 +9,14 @@
 import UIKit
 import AFNetworking
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet] = []
-    var refreshControl = UIRefreshControl()
+    var refreshControl: UIRefreshControl!
+    var tweetMaxId: Int?
+    private var isMoreTweetsLoading = false
+    var loadingMoreView: InfiniteScrollActivityView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,28 +25,53 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 40
 
-        refreshControl.addTarget(self, action: #selector(fetchTweets), for: .valueChanged)
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(fetchTweets(forInfiniteScroll:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
         
         self.tabBarController?.tabBar.tintColor = UIColor(colorLiteralRed: 64/255, green: 153/255, blue: 255/255, alpha: 1)
         setNavigationBarButtons()
-        TwitterClient.sharedInstance.homeTimeline(success: { (tweets:[Tweet]) in
-            self.tweets = tweets
-            self.tableView.reloadData()
-        }) { (error: Error) in
-            print("error: \(error.localizedDescription)")
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        // Set up Infinite Scroll loading indicator
+        let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+        loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.isHidden = true
+        tableView.addSubview(loadingMoreView!)
+        
+        var insets = tableView.contentInset;
+        insets.bottom += InfiniteScrollActivityView.defaultHeight;
+        tableView.contentInset = insets
+        
+        fetchTweets(forInfiniteScroll: false)
     }
     
-    func fetchTweets() {
-        TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) in
-            self.tweets = tweets
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !isMoreTweetsLoading {
+            let ScrollViewContentHeight = self.tableView.contentSize.height
+            let scrollOffsetThreshold = ScrollViewContentHeight - self.tableView.bounds.size.height
+            
+            if scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging && !tweets.isEmpty {
+                isMoreTweetsLoading = true
+                
+                let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+                
+                self.fetchTweets(forInfiniteScroll: true)
+            }
+        }
+    }
+    
+    func fetchTweets(forInfiniteScroll: Bool) {
+        if !forInfiniteScroll {
+            tweetMaxId = nil
+        }
+        TwitterClient.sharedInstance.homeTimeline(withMaxId: tweetMaxId, success: { (tweets: [Tweet]) in
+            self.isMoreTweetsLoading = false
+            self.loadingMoreView?.stopAnimating()
+            self.tweets = forInfiniteScroll ? self.tweets + tweets : tweets
             self.refreshControl.endRefreshing()
+            self.tweetMaxId = tweets.last?.id
             self.tableView.reloadData()
         }) { (error: Error) in
             print("error: \(error.localizedDescription)")
@@ -91,6 +119,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.tweetTextLabel.text = tweet.text
         
         return cell
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     /*
