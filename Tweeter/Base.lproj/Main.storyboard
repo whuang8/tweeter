@@ -165,6 +165,9 @@
                                                         <constraint firstAttribute="width" constant="20" id="0yC-CB-Gad"/>
                                                     </constraints>
                                                     <state key="normal" image="retweet-icon"/>
+                                                    <connections>
+                                                        <action selector="onRetweetTap:" destination="uDS-4b-s0K" eventType="touchUpInside" id="rIe-PJ-xwi"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sh-0K-IPd">
                                                     <rect key="frame" x="218" y="59" width="20" height="20"/>
@@ -172,6 +175,9 @@
                                                         <constraint firstAttribute="width" constant="20" id="PBx-Pa-eRL"/>
                                                     </constraints>
                                                     <state key="normal" image="favor-icon"/>
+                                                    <connections>
+                                                        <action selector="onHeartTap:" destination="uDS-4b-s0K" eventType="touchUpInside" id="uzx-Bc-Lue"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ap6-AL-HrA">
                                                     <rect key="frame" x="297" y="59" width="20" height="20"/>
@@ -235,9 +241,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="favoriteButton" destination="0Sh-0K-IPd" id="hNI-0E-lRj"/>
                                             <outlet property="favoriteCount" destination="ecG-Ma-lps" id="xse-qG-r3c"/>
                                             <outlet property="profilePictureImageView" destination="nBG-x4-O63" id="nym-TJ-pCZ"/>
                                             <outlet property="replyCount" destination="QVv-xC-VoM" id="O9j-VE-8i7"/>
+                                            <outlet property="retweetButton" destination="Sex-U0-p1R" id="DrC-4l-ZRw"/>
                                             <outlet property="retweetCount" destination="v4k-E5-bR6" id="Etc-Qk-MCB"/>
                                             <outlet property="timestampLabel" destination="Rcr-Ob-1CB" id="hZq-Tf-bEp"/>
                                             <outlet property="tweetTextLabel" destination="biq-kB-TiW" id="y8C-0j-Bv7"/>
@@ -256,7 +264,6 @@
                             <constraint firstAttribute="trailing" secondItem="z8L-4l-mF9" secondAttribute="trailing" id="wzB-iY-PwF"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="P7s-a8-sZP"/>
                     <navigationItem key="navigationItem" id="LOq-Ym-KF1"/>
                     <connections>
                         <outlet property="tableView" destination="z8L-4l-mF9" id="H1A-bz-YdG"/>
@@ -322,30 +329,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EmR-YN-BwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1566" y="-581"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="wp1-SB-nhR">
-            <objects>
-                <viewController id="OCO-nq-OY3" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9eb-QG-NfT"/>
-                        <viewControllerLayoutGuide type="bottom" id="afI-6F-V1J"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VDm-Nq-DnX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="favor-icon" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-VJ-ZJO">
-                                <rect key="frame" x="67" y="190" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kfv-ci-MfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2339" y="-391"/>
         </scene>
         <!--Moments View Controller-->
         <scene sceneID="uwe-Mi-qL0">

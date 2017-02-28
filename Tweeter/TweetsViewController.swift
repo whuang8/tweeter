@@ -117,6 +117,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.userNameLabel.text = tweet.user?.name
         cell.userHandleLabel.text = "@\((tweet.user?.screenname)!)"
         cell.tweetTextLabel.text = tweet.text
+        cell.favoriteCount.text = "\(tweet.favoriteCount)"
+        cell.retweetCount.text = "\(tweet.retweetCount)"
+        cell.tweet = tweet
         
         return cell
     }

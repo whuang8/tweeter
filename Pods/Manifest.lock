@@ -16,15 +16,18 @@ PODS:
     - AFNetworking/NSURLSession
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
+  - lottie-ios (1.5.0)
 
 DEPENDENCIES:
   - AFNetworking (= 3.0.0)
   - BDBOAuth1Manager (= 2.0.0)
+  - lottie-ios
 
 SPEC CHECKSUMS:
   AFNetworking: 932ff751f9d6fb1dad0b3af58b7e3ffba0a4e7fd
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
+  lottie-ios: 8b959bce82f84e42d832d605f5bab9d9edba8ad2
 
-PODFILE CHECKSUM: 0e5530c2bd82e6fa250476038c1acf4c76a26a3e
+PODFILE CHECKSUM: 824e90cc7486b303e92c717c6bbfd928c2e56e1e
 
 COCOAPODS: 1.1.1
