@@ -46,7 +46,7 @@ class TwitterClient: BDBOAuth1SessionManager {
             
             let json = try! JSONSerialization.data(withJSONObject: tweetsDictionaries[0], options: JSONSerialization.WritingOptions.prettyPrinted)
             let jsonString = NSString(data: json, encoding: String.Encoding.utf8.rawValue)! as String
-            print(jsonString)
+            //print(jsonString)
             
             let tweets = Tweet.tweetsWithArray(dictionaries: tweetsDictionaries)
             success(tweets)
