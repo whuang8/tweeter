@@ -87,6 +87,24 @@
             </objects>
             <point key="canvasLocation" x="-738" y="1054"/>
         </scene>
+        <!--Compose Tweet View Controller-->
+        <scene sceneID="MLb-xP-uhw">
+            <objects>
+                <viewController id="Xym-Rm-EDB" customClass="ComposeTweetViewController" customModule="Tweeter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UJ2-9M-48X"/>
+                        <viewControllerLayoutGuide type="bottom" id="3TV-3r-mtK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GNj-V7-j5w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oUY-gy-pR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1549" y="-1980"/>
+        </scene>
         <!--Tweets View Controller-->
         <scene sceneID="KVi-G6-KQg">
             <objects>
@@ -268,6 +286,7 @@
                     <navigationItem key="navigationItem" id="LOq-Ym-KF1"/>
                     <connections>
                         <outlet property="tableView" destination="z8L-4l-mF9" id="H1A-bz-YdG"/>
+                        <segue destination="Xym-Rm-EDB" kind="presentation" id="onr-ns-pKJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fNL-sZ-7mX" userLabel="First Responder" sceneMemberID="firstResponder"/>
