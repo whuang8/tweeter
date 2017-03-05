@@ -27,6 +27,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(fetchTweets(forInfiniteScroll:)), for: .valueChanged)
+        refreshControl.backgroundColor = UIColor.groupTableViewBackground
         tableView.addSubview(refreshControl)
         
         self.tabBarController?.tabBar.tintColor = UIColor(colorLiteralRed: 64/255, green: 153/255, blue: 255/255, alpha: 1)
