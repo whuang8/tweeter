@@ -54,7 +54,14 @@ class ComposeTweetViewController: UIViewController {
     }
     
     func tweetButtonTapped(sender: UIBarButtonItem) {
-        
+        if composeTweetView.text.isEmpty == false {
+            TwitterClient.sharedInstance.tweet(status: composeTweetView.text)
+            dismiss(animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Empty Text", message: "Text field empty!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
     func closeButtonTapped(sender: UIBarButtonItem) {

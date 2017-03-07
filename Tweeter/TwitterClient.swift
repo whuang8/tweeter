@@ -36,6 +36,20 @@ class TwitterClient: BDBOAuth1SessionManager {
         NotificationCenter.default.post(name: User.userDidLogoutNotification, object: nil)
     }
     
+    func tweet(status: String) {
+        let endpoint = "/1.1/statuses/update.json?status="
+        guard let encodedStatus = status.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+            print("wat")
+            return
+        }
+        let url = endpoint + encodedStatus
+        post(url, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            print("tweet succeeded")
+        }) { (task: URLSessionDataTask?, error: Error) in
+            print("error: \(error.localizedDescription)")
+        }
+    }
+    
     func homeTimeline(withMaxId maxId: Int?, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
         var endpoint = "/1.1/statuses/home_timeline.json"
         if let maxId = maxId {
@@ -43,11 +57,6 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
         get(endpoint, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             let tweetsDictionaries = response as! [NSDictionary]
-            
-            let json = try! JSONSerialization.data(withJSONObject: tweetsDictionaries[0], options: JSONSerialization.WritingOptions.prettyPrinted)
-            let jsonString = NSString(data: json, encoding: String.Encoding.utf8.rawValue)! as String
-            //print(jsonString)
-            
             let tweets = Tweet.tweetsWithArray(dictionaries: tweetsDictionaries)
             success(tweets)
         }, failure: { (task: URLSessionDataTask?, error: Error) in
