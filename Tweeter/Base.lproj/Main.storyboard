@@ -286,7 +286,7 @@
                     <navigationItem key="navigationItem" id="LOq-Ym-KF1"/>
                     <connections>
                         <outlet property="tableView" destination="z8L-4l-mF9" id="H1A-bz-YdG"/>
-                        <segue destination="Xym-Rm-EDB" kind="presentation" id="onr-ns-pKJ"/>
+                        <segue destination="Xym-Rm-EDB" kind="presentation" identifier="ComposeTweetSegue" id="onr-ns-pKJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fNL-sZ-7mX" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -93,7 +93,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         titleView.addSubview(logoView)
         
         let connectButton = UIBarButtonItem(image: connectImage, style: .plain, target: self, action: nil)
-        let composeButton = UIBarButtonItem(image: composeImage, style: .plain, target: self, action: nil)
+        let composeButton = UIBarButtonItem(image: composeImage, style: .plain, target: self, action: #selector(composeButtonTapped(sender:)))
         let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: nil)
         searchButton.imageInsets = UIEdgeInsetsMake(0, 0, 0, -44)
         
@@ -103,6 +103,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.rightBarButtonItems = [composeButton, searchButton]
         self.navigationItem.titleView = titleView
         self.navigationItem.leftBarButtonItem = connectButton
+    }
+    
+    func composeButtonTapped(sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "ComposeTweetSegue", sender: self)
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
