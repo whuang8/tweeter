@@ -20,21 +20,6 @@ class TweetDetailsViewController: UIViewController {
     @IBOutlet weak var favoriteCountLabel: UILabel!
 
     var tweet: Tweet?
-    
-    
-    
-    
-    /*
-     userNameLabel: UILabel!
-     @IBOutlet weak var userHandleLabel: UILabel!
-     @IBOutlet weak var tweetTextLabel: UILabel!
-     @IBOutlet weak var timestampLabel: UILabel!
-     @IBOutlet weak var replyCount: UILabel!
-     @IBOutlet weak var retweetCount: UILabel!
-     @IBOutlet weak var favoriteButton: UIButton!
-     @IBOutlet weak var favoriteCount: UILabel!
-     @IBOutlet weak var retweetButton: UIButton!
-     */
 
     override func viewDidLoad() {
         super.viewDidLoad()

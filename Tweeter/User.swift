@@ -13,8 +13,11 @@ class User: NSObject {
     var name: String?
     var screenname: String?
     var profileUrl: URL?
+    var bannerUrl: URL?
     var bio: String?
     var dictionary: NSDictionary?
+    var followingCount: Int = 0
+    var followersCount: Int = 0
     static let userDidLogoutNotification = NSNotification.Name.init("UserDidLogout")
     
     init(dictionary: NSDictionary) {
@@ -22,10 +25,16 @@ class User: NSObject {
         name = dictionary["name"] as? String
         screenname = dictionary["screen_name"] as? String
         let profileUrlString = dictionary["profile_image_url_https"] as? String
+        let bannerUrlString = dictionary["profile_background_image_url_https"] as? String
         bio = dictionary["description"] as? String
+        followingCount = (dictionary["friends_count"] as? Int) ?? 0
+        followersCount = (dictionary["followers_count"] as? Int) ?? 0
         
         if let profileUrlString = profileUrlString {
             profileUrl = URL(string: profileUrlString)
+        }
+        if let bannerUrlString = bannerUrlString {
+            bannerUrl = URL(string: bannerUrlString)
         }
     }
     
