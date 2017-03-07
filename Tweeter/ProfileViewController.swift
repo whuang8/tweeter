@@ -22,19 +22,27 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBarButtons()
         if let user = self.user {
-            bannerImageView.setImageWith((user.bannerUrl)!)
-            profilePictureImageView.setImageWith(user.profileUrl!)
-            userNameLabel.text = user.name
-            userHandleLabel.text = "@\((user.screenname)!)"
-            userBioLabel.text = user.bio
-            followingCountLabel.text = "\(user.followingCount)"
-            followersCountLabel.text = "\(user.followersCount)"
+            displayInformation(user: user)
+        } else {
+            self.user = User.currentUser
+            displayInformation(user: self.user!)
         }
-        
+        setNavigationBarButtons()
         
         // Do any additional setup after loading the view.
+    }
+    
+    func displayInformation(user: User) {
+        profilePictureImageView.layer.cornerRadius = 5
+        profilePictureImageView.clipsToBounds = true
+        bannerImageView.setImageWith((user.bannerUrl)!)
+        profilePictureImageView.setImageWith(user.profileUrl!)
+        userNameLabel.text = user.name
+        userHandleLabel.text = "@\((user.screenname)!)"
+        userBioLabel.text = user.bio
+        followingCountLabel.text = "\(user.followingCount)"
+        followersCountLabel.text = "\(user.followersCount)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,11 +52,12 @@ class ProfileViewController: UIViewController {
     
     func setNavigationBarButtons() {
 
-        
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.tintColor = UIColor(colorLiteralRed: 64/255, green: 153/255, blue: 255/255, alpha: 1)
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.plain, target: self, action: #selector(onLogOut(_:)))
+        if self.user == User.currentUser {
+            self.navigationController?.navigationBar.barTintColor = UIColor.white
+            self.navigationController?.navigationBar.tintColor = UIColor(colorLiteralRed: 64/255, green: 153/255, blue: 255/255, alpha: 1)
+            
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.plain, target: self, action: #selector(onLogOut(_:)))
+        }
     }
     
     
