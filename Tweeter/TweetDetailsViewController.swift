@@ -39,6 +39,8 @@ class TweetDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarButtons()
+        profilePictureImageView.layer.cornerRadius = 5
+        profilePictureImageView.clipsToBounds = true
         profilePictureImageView.setImageWith((tweet?.profileUrl)!)
         userNameLabel.text = tweet?.user?.name
         userHandleLabel.text = "@\((tweet?.user?.screenname)!)"

@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, ProfileViewSegueDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet] = []
@@ -17,6 +17,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var tweetMaxId: Int?
     private var isMoreTweetsLoading = false
     var loadingMoreView: InfiniteScrollActivityView?
+    var userForSegue: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,9 +126,16 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.favoriteCount.text = "\(tweet.favoriteCount)"
         cell.retweetCount.text = "\(tweet.retweetCount)"
         cell.tweet = tweet
+        cell.delegate = self
         
         return cell
     }
+    
+    public func profileImageTapped(user: User) {
+        self.userForSegue = user
+        performSegue(withIdentifier: "ProfileViewSegue", sender: UIImageView())
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -138,9 +146,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! TweetDetailsViewController
-        let cell = sender as! TweetCell
-        vc.tweet = cell.tweet
+        if let sender = sender as? UITableViewCell {
+            let vc = segue.destination as! TweetDetailsViewController
+            let cell = sender as! TweetCell
+            vc.tweet = cell.tweet
+        }
+        if (sender as? UIImageView) != nil {
+            let vc = segue.destination as! ProfileViewController
+            vc.user = self.userForSegue
+        }
         
     }
     

@@ -287,6 +287,7 @@
                     <connections>
                         <outlet property="tableView" destination="z8L-4l-mF9" id="H1A-bz-YdG"/>
                         <segue destination="Xym-Rm-EDB" kind="presentation" identifier="ComposeTweetSegue" id="onr-ns-pKJ"/>
+                        <segue destination="TJj-hP-08d" kind="show" identifier="ProfileViewSegue" id="9yx-c1-Dvn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fNL-sZ-7mX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -688,5 +689,8 @@
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="9yx-c1-Dvn"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.25098039220000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

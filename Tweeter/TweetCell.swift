@@ -22,6 +22,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var favoriteCount: UILabel!
     @IBOutlet weak var retweetButton: UIButton!
     
+    var delegate: ProfileViewSegueDelegate?
     var tweet: Tweet?
     var favCount = 0
     var animationView: LOTAnimationView?
@@ -31,7 +32,16 @@ class TweetCell: UITableViewCell {
         profilePictureImageView.layer.cornerRadius = 5
         profilePictureImageView.clipsToBounds = true
         retweetCount.text = "\(tweet?.retweetCount)"
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        profilePictureImageView?.isUserInteractionEnabled = true
+        profilePictureImageView.addGestureRecognizer(tapGestureRecognizer)
 
+    }
+    
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        delegate?.profileImageTapped(user: (tweet?.user)!)
+        
     }
     
     @IBAction func onHeartTap(_ sender: Any) {
