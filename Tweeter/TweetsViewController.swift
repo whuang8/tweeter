@@ -155,7 +155,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let vc = segue.destination as! ProfileViewController
             vc.user = self.userForSegue
         }
-        
     }
     
 

@@ -98,12 +98,25 @@
                     <view key="view" contentMode="scaleToFill" id="GNj-V7-j5w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xV5-RP-j0D">
+                                <rect key="frame" x="8" y="0.0" width="359" height="267"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="twitter"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="gL8-i7-cuT"/>
+                    <connections>
+                        <outlet property="composeTweetView" destination="xV5-RP-j0D" id="0sT-KL-dWn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oUY-gy-pR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1549" y="-1980"/>
+            <point key="canvasLocation" x="2487.1999999999998" y="-1980.3598200899551"/>
         </scene>
         <!--Tweets View Controller-->
         <scene sceneID="KVi-G6-KQg">
@@ -286,7 +299,7 @@
                     <navigationItem key="navigationItem" id="LOq-Ym-KF1"/>
                     <connections>
                         <outlet property="tableView" destination="z8L-4l-mF9" id="H1A-bz-YdG"/>
-                        <segue destination="Xym-Rm-EDB" kind="presentation" identifier="ComposeTweetSegue" id="onr-ns-pKJ"/>
+                        <segue destination="9NE-15-68V" kind="presentation" identifier="ComposeTweetSegue" id="onr-ns-pKJ"/>
                         <segue destination="TJj-hP-08d" kind="show" identifier="ProfileViewSegue" id="9yx-c1-Dvn"/>
                     </connections>
                 </viewController>
@@ -780,6 +793,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j9R-go-X6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="798" y="1612"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HvC-Lb-BrR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9NE-15-68V" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Msm-62-iso">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Xym-Rm-EDB" kind="relationship" relationship="rootViewController" id="cCp-ab-94r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ISM-ke-ZjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1548" y="-1980.3598200899551"/>
         </scene>
     </scenes>
     <resources>

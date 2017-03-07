@@ -58,6 +58,7 @@ class ProfileViewController: UIViewController {
             
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.plain, target: self, action: #selector(onLogOut(_:)))
         }
+
     }
     
     

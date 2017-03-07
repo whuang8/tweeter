@@ -29,6 +29,7 @@ class TweetCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
         profilePictureImageView.layer.cornerRadius = 5
         profilePictureImageView.clipsToBounds = true
         retweetCount.text = "\(tweet?.retweetCount)"
